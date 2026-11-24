@@ -1,0 +1,287 @@
+/* ===== MIS COLORES (cambiando acá, cambia toda la página) ===== */
+:root {
+  --azul-marino: #0b1d3a;
+  --rojo-oscuro: #8b1e2d;
+  --fondo: #f3f5f9;
+  --texto: #14213d;
+  --borde: #d3d9e6;
+}
+
+/* Que el ancho incluya bordes y relleno (evita desbordes) */
+* {
+  box-sizing: border-box;
+}
+
+/* Toda la página */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+/* Encabezado */
+header {
+  background: var(--azul-marino);
+  color: white;
+  padding: 1.5rem 1rem;
+  border-bottom: 5px solid var(--rojo-oscuro); /* línea roja abajo */
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* Contenido principal (FLEXBOX) */
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Cada sección como una caja */
+main section {
+  background: white;
+  border: 1px solid var(--borde);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+/* Títulos de sección en azul marino */
+h2 {
+  color: var(--azul-marino);
+  margin-top: 0;
+}
+
+/* Botón en rojo oscuro */
+button {
+  font: inherit;
+  font-weight: bold;
+  background: var(--rojo-oscuro);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+/* Foco visible con teclado */
+:focus-visible {
+  outline: 3px solid var(--rojo-oscuro);
+  outline-offset: 3px;
+}
+
+/* Pie */
+footer {
+  background: var(--azul-marino);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 5px solid var(--rojo-oscuro);
+}
+/* Zona de estado */
+#estado {
+  background: white;
+  border: 1px solid var(--borde);
+  border-left: 6px solid var(--azul-marino); /* barra de color a la izquierda */
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+/* Lista de resultados (GRID): las tarjetas se acomodan solas */
+#lista-resultados {
+  list-style: none;   /* saca los puntitos de la lista */
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+}/* Tarjeta de cada moneda */
+.tarjeta {
+  background: white;
+  border: 1px solid var(--borde);
+  border-top: 5px solid var(--rojo-oscuro);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.tarjeta h3 {
+  margin: 0;
+  color: var(--azul-marino);
+}
+
+.tarjeta span {
+  font-size: 0.8rem;
+  color: #5a6478;
+}
+
+.precio {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 0.5rem 0 0;
+}/* Colores de cada estado */
+#estado.estado-carga     { border-left-color: #b7791f; background: #fff8e6; }
+#estado.estado-resultado { border-left-color: #2f7a4a; background: #eaf6ee; }
+#estado.estado-error     { border-left-color: var(--rojo-oscuro); background: #fbeaec; }
+#estado.estado-vacio { border-left-color: #6b7280; background: #f1f2f4; }
+/* Que el botón de reintentar no ocupe todo el ancho */
+#btn-reintentar {
+  align-self: flex-start;
+}/* Formulario: columna en celular, fila en pantallas grandes */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.campo label {
+  font-weight: bold;
+}
+
+.campo input,
+.campo select {
+  font: inherit;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--borde);
+  border-radius: 0.5rem;
+}
+
+@media (min-width: 40rem) {
+  .formulario {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}/* Tarjeta destacada */
+.tarjeta.destacada {
+  border-color: var(--rojo-oscuro);
+  box-shadow: 0 0 0 2px var(--rojo-oscuro);
+}
+
+.btn-destacar {
+  margin-top: 0.75rem;
+  background: white;
+  color: var(--rojo-oscuro);
+  border: 2px solid var(--rojo-oscuro);
+  padding: 0.4rem 0.8rem;
+  min-height: 44px;
+}
+
+.btn-destacar[aria-pressed='true'] {
+  background: var(--rojo-oscuro);
+  color: white;
+}/* Mensaje de error de un campo */
+.error-campo {
+  margin: 0;
+  color: var(--rojo-oscuro);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.campo [aria-invalid='true'] {
+  border-color: var(--rojo-oscuro);
+  border-width: 3px;
+}
+.formulario .campo {
+  flex: 1;
+}/* Enlaces */
+a {
+  color: var(--rojo-oscuro);
+  font-weight: bold;
+}
+
+.logo {
+  color: white;
+  text-decoration: none;
+}
+
+/* Botones y enlace de la tarjeta */
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.acciones .btn-destacar {
+  margin-top: 0;
+}
+
+/* Página de detalle */
+.simbolo {
+  font-size: 1rem;
+  color: #5a6478;
+}
+
+.detalle dt {
+  font-size: 0.9rem;
+  color: #5a6478;
+  margin-top: 0.75rem;
+}
+
+.detalle dd {
+  margin: 0;
+  font-weight: bold;
+}
+/* Enlaces */
+a {
+  color: var(--rojo-oscuro);
+  font-weight: bold;
+}
+
+.logo {
+  color: white;
+  text-decoration: none;
+}
+
+/* Botones y enlace de la tarjeta */
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.acciones .btn-destacar {
+  margin-top: 0;
+}
+
+/* Página de detalle */
+.simbolo {
+  font-size: 1rem;
+  color: #5a6478;
+}
+
+.detalle dt {
+  font-size: 0.9rem;
+  color: #5a6478;
+  margin-top: 0.75rem;
+}
+
+.detalle dd {
+  margin: 0;
+  font-weight: bold;
+}
